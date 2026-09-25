@@ -1,234 +1,303 @@
-# FinTrust Digital Bank Analysis
+# FinTrust Digital Bank — End-to-End Transaction Analysis
 
-## Turning Transaction Data into Business Insights
+## Project Overview
 
-![Excel](https://img.shields.io/badge/Excel-Data%20Cleaning%20%26%20Exploration-217346?style=flat&logo=microsoftexcel&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-Data%20Analysis-4479A1?style=flat&logo=mysql&logoColor=white)
-![Power BI](https://img.shields.io/badge/Power%20BI-Dashboarding-F2C811?style=flat&logo=powerbi&logoColor=black)
-![Status](https://img.shields.io/badge/Project-Completed%20%2F%20In%20Progress-blue?style=flat)
+FinTrust Digital Bank is a digital banking business seeking to better understand its transaction activity, customer behaviour, transaction channels, risk patterns, and operational performance.
 
----
+This project presents an end-to-end analysis of FinTrust's transaction data, moving from initial business questions and data quality assessment through SQL analysis, Python exploratory data analysis (EDA), and Power BI dashboard development.
 
-## 📌 Project Overview
-
-FinTrust is a financial services business with transaction-level data containing information about customer transactions, transaction values, channels, locations, devices, transaction outcomes, and risk-review flags.
-
-The purpose of this project is to transform raw transaction records into meaningful business insights that can help stakeholders understand:
-
-- Customer transaction behaviour
-- Transaction activity and volume
-- Transaction value
-- Channel usage
-- Transaction outcomes
-- Location-based activity
-- Risk-review patterns
-- Operational areas that may require further investigation
-
-The project follows a practical analytics workflow:
-
-**Excel → MySQL → Power BI**
-
-Excel is used for initial data inspection, cleaning, validation, and exploration.
-
-MySQL is used for structured analysis and answering business questions.
-
-Power BI is used to transform the analysis into an interactive dashboard for communication and decision-making.
+The objective was not simply to describe the dataset, but to transform raw transaction data into actionable business insights that could support decision-making across customer management, digital channels, transaction operations, and risk monitoring.
 
 ---
 
-# 🎯 Business Problem
+## Business Problem
 
-FinTrust has a large amount of transaction data, but raw transaction records alone do not provide an easy way for stakeholders to understand what is happening across the business.
+Digital banks generate large volumes of transaction data across different channels, devices, locations, and transaction statuses.
 
-The business needs to understand:
+However, raw transaction records alone do not answer important management questions.
 
-- How frequently customers transact
-- Which transaction types are most common
-- Which channels customers use most
-- How much transaction value is being processed
-- How transaction activity changes over time
-- Which transaction types or channels experience more reversals
-- Where transaction activity is concentrated
-- Where risk-review flags occur most frequently
-- How transaction outcomes differ between risk-flagged and non-risk-flagged transactions
+## Key Analytical Questions
 
-The analysis therefore focuses on converting transaction-level data into structured insights that can support informed business and operational decisions.
+The project investigated questions such as:
 
----
+- What is the total transaction value?
+- How many transactions are recorded?
+- How many customers are represented?
+- What is the average transaction value?
+- Which transaction channels are most active?
+- Which device types are most commonly used?
+- What is the distribution of transaction statuses?
+- What proportion of transactions are successful?
+- Which locations generate the highest transaction activity?
+- How is transaction value distributed across channels and devices?
+- Are there notable patterns in risk-flagged transactions?
 
-# Project Objective
+The FinTrust analysis was designed to answer these questions using multiple analytical tools.
 
-The objective of this project is to analyze FinTrust's transaction data to uncover patterns in:
 
-- Customer behaviour
-- Transaction activity
-- Transaction value
-- Channel usage
-- Transaction outcomes
-- Location patterns
-- Risk-review activity
+# Project Objectives
 
-The analysis will transform raw transaction records into meaningful insights that can be communicated through SQL analysis and an interactive Power BI dashboard.
+The analysis focused on five major objectives:
 
----
-
-# Dataset
-
-The dataset contains transaction-level information.
-
-### Dataset Columns
-
-| Column | Description |
-|---|---|
-| `Transaction_ID` | Unique identifier for each transaction |
-| `Customer_ID` | Identifier for the customer who performed the transaction |
-| `Transaction_DateTime` | Date and time the transaction occurred |
-| `Transaction_Type` | Type of transaction performed |
-| `Amount_NGN` | Transaction amount in Nigerian Naira |
-| `Channel` | Channel through which the transaction occurred |
-| `Device_Type` | Device used to perform the transaction |
-| `Location` | Location associated with the transaction |
-| `International_Transaction` | Indicates whether the transaction was international |
-| `Transaction_Status` | Outcome/status of the transaction |
-| `Risk_Review_Flag` | Indicates whether the transaction was flagged for risk review |
+1. Assess the quality and reliability of the raw transaction data.
+2. Analyze transaction activity and customer behaviour using SQL.
+3. Explore transaction patterns and distributions using Python.
+4. Develop an interactive Power BI management dashboard.
+5. Translate analytical results into meaningful business findings and recommendations.
 
 ---
 
-# 🔎 Business Questions
+# Analytical Workflow
 
-The analysis is designed to answer the following questions:
+The project followed a structured end-to-end analytics workflow:
 
-### 1. Customer Activity
+```text
+Raw Transaction Data
+        ↓
+Initial Analysis Plan
+        ↓
+Business Questions
+        ↓
+Excel Data Quality Assessment
+        ↓
+Data Cleaning & Validation
+        ↓
+SQL Transaction Analysis
+        ↓
+Python Exploratory Data Analysis
+        ↓
+Power BI Dashboard
+        ↓
+Business Findings
+        ↓
+Management Insights & Recommendations
 
-Which customers make the most transactions, and which transaction types or channels do they use most?
+```
 
-### 2. Transaction Trends
+### Excel Data Quality Assessment
 
-How does transaction volume change over time, and which dates or hours experience the highest activity?
+The raw dataset was first examined in Excel to understand its structure and identify potential data quality issues.
 
-### 3. Transaction Value
+The assessment examined:
 
-Which transaction types generate the highest total transaction value and average transaction value?
-
-### 4. Channel Performance
-
-Which transaction channels are used most frequently, and which channels process the highest transaction value?
-
-### 5. Transaction Outcomes
-
-What proportion of transactions are successful, reversed, or unsuccessful?
-
-Which transaction types or channels have higher reversal rates?
-
-### 6. Location Analysis
-
-Which locations have the highest transaction volume and transaction value?
-
-### 7. Risk Patterns
-
-Which transaction types, channels, locations, or device types have the highest proportion of risk-flagged transactions?
-
-### 8. Risk and Transaction Outcomes
-
-How do transaction outcomes differ between risk-flagged and non-risk-flagged transactions?
-
----
-
-# Key Performance Indicators (KPIs)
-
-The following KPIs are used to measure transaction performance.
-
-| KPI | Definition | Purpose |
-|---|---|---|
-| **Total Transaction Volume** | Total number of transactions | Measures overall transaction activity |
-| **Total Transaction Value** | Sum of all transaction amounts | Measures total value processed |
-| **Average Transaction Value** | Average transaction amount | Shows the typical transaction size |
-| **Transaction Success Rate** | Successful transactions ÷ total transactions | Measures transaction completion |
-| **Reversal Rate** | Reversed transactions ÷ total transactions | Highlights reversal patterns |
-| **Channel Usage Rate** | Transactions by channel ÷ total transactions | Measures channel preference |
-| **Risk Flag Rate** | Risk-flagged transactions ÷ total transactions | Measures the proportion requiring risk review |
-| **Risk-Flagged Transaction Value** | Total value of risk-flagged transactions | Measures monetary value associated with flagged activity |
-
-> **Important:** A risk-review flag is not treated as proof of fraud. It indicates that a transaction was flagged for review.
-
----
-
-# 🧹 Data Preparation & Cleaning
-
-Before performing analysis, the dataset was inspected and prepared for reliable analysis.
-
-The data preparation process included:
-
-- Reviewing the dataset structure
-- Checking column names and data types
-- Checking for missing values
-- Checking for duplicate transaction IDs
-- Reviewing transaction categories for consistency
-- Validating transaction amounts
-- Reviewing transaction dates and times
-- Checking transaction status values
-- Checking risk-review flag values
-- Preparing date and time fields for analysis
-- Validating the dataset before deeper analysis
-
-### Data Quality Considerations
-
-Particular attention was given to:
-
-- Duplicate transaction IDs
 - Missing values
+- Duplicate records
+- Inconsistent categories
 - Incorrect data types
-- Inconsistent categorical values
-- Invalid transaction amounts
-- Date/time formatting
-- Unexpected transaction statuses
+- Formatting inconsistencies
+- Invalid or unusual values
+- Transaction status consistency
+- Channel and device categories
+- Customer identifiers
+- Transaction amounts
+- Risk-related fields
+- Data Quality Process
 
----
+The process involved:
+- Importing the raw dataset into Excel.
+- Inspecting the columns and data types.
+- Checking for blank and missing values.
+- Identifying duplicate records.
+- Standardizing categorical values.
+- Checking numerical fields for inconsistencies.
+- Validating transaction status categories.
+- Reviewing transaction amounts for unusual values.
+- Preparing the dataset for further analysis.
 
-# Tools & Technologies
+The purpose of this stage was to ensure that subsequent SQL, Python, and Power BI analyses were based on reliable and consistent data.
 
-## Microsoft Excel
+### SQL Transaction Analysis
 
-Excel was used for:
+SQL was used to perform structured analysis of the transaction data.
 
-- Initial data inspection
-- Data cleaning
-- Data validation
-- Exploratory analysis
-- PivotTables
-- Basic transaction summaries
-- Identifying potential data-quality issues
+The analysis focused on aggregating and segmenting transaction activity to identify patterns that would be difficult to understand from raw records alone.
 
-### Excel's role
+#### SQL Techniques Used
 
-**Prepare → Inspect → Validate**
+The project applied SQL concepts including:
 
----
-
-## MySQL
-
-MySQL was used for:
-
-- Structured querying
-- Aggregations
-- Grouping
+- SELECT
+- WHERE
+- GROUP BY
+- ORDER BY
+- Aggregate functions
+- COUNT()
+- SUM()
+- AVG()
+- MIN()
+- MAX()
+- Conditional logic
 - Filtering
-- Customer-level analysis
-- Transaction-type analysis
+- Customer-level aggregation
 - Channel analysis
-- Location analysis
-- Risk analysis
-- Transaction-status analysis
-- Business-question analysis
+- Device analysis
+- Transaction status analysis
+- Examples of Questions Answered with SQL
 
-### Example SQL analysis
+SQL was used to investigate:
 
-```sql
-SELECT 
-    Transaction_Type,
-    COUNT(*) AS Transaction_Count,
-    SUM(Amount_NGN) AS Total_Value,
-    AVG(Amount_NGN) AS Average_Value
-FROM fintrust_transactions
-GROUP BY Transaction_Type
-ORDER BY Total_Value DESC;
+- Total transaction value
+- Total number of transactions
+- Average transaction value
+- Transaction activity by channel
+- Transaction activity by device
+- Transaction status distribution
+- Customer transaction behaviour
+- High-value customers
+- High-frequency customers
+- Risk-related transaction patterns
+
+SQL provided the foundation for understanding the numerical and categorical structure of the transaction data.
+
+### Python Exploratory Data Analysis
+
+Python was used to perform exploratory data analysis and provide another perspective on the dataset.
+
+The analysis was performed using Python and pandas, with visualizations used to explore distributions and relationships within the data.
+
+Python EDA Process
+
+The workflow included:
+
+- Importing the dataset.
+- Loading the data into pandas.
+- Inspecting the dataset structure.
+- Checking rows and columns.
+- Examining data types.
+- Checking missing values.
+- Reviewing descriptive statistics.
+- Exploring categorical variables.
+- Examining transaction amount distributions.
+- Creating visualizations for key transaction dimensions.
+
+Areas Explored
+
+The Python analysis examined:
+
+- Transaction amount distribution
+- Transaction activity
+- Transaction channels
+- Device types
+- Transaction statuses
+- Customer transaction value
+Other relevant categorical and numerical patterns
+
+Python helped validate patterns discovered during earlier analysis and provided visual exploration of the dataset.
+
+### Power BI Dashboard
+
+Power BI was used to transform the analytical results into an interactive management dashboard.
+
+The dashboard was designed to provide management with a quick overview of transaction performance while allowing users to explore different dimensions of the data.
+
+Key Dashboard KPIs
+
+The dashboard includes metrics such as:
+
+- Total Customers
+- Total Transactions
+- Total Transaction Amount
+- Average Transaction Value
+- Successful Transactions
+- Transaction Status
+- Channel Activity
+- Device Activity
+
+The exact KPI calculations are based on the cleaned transaction dataset.
+
+Dashboard Visualizations
+
+The dashboard was designed to communicate several important dimensions of transaction activity.
+
+Transaction Performance
+
+Visuals were used to understand overall transaction volume and value.
+
+Transaction Status
+
+Status analysis helps identify the distribution of:
+
+- Successful transactions
+- Failed transactions
+- Pending transactions
+
+This provides an operational view of transaction outcomes.
+
+- Channel Analysis
+
+Transaction channels were compared to understand how customers interact with FinTrust's digital banking services.
+
+- Device Analysis
+
+Device categories were analyzed to understand the technologies customers use when performing transactions.
+
+- Customer Value
+
+Customer-level transaction activity was examined to identify differences in transaction contribution and behaviour.
+
+- Risk Monitoring
+
+Risk-related transaction indicators were incorporated to help identify areas that may require additional investigation.
+
+## Business Findings
+
+The final stage of the project translated analytical results into business findings.
+
+Rather than simply describing what a chart shows, findings were structured using:
+
+Finding → Evidence → Business Meaning
+
+This approach connects the data to a potential management decision.
+
+For example:
+
+### Finding
+
+A particular transaction channel contributes a significant share of overall transaction activity.
+
+### Evidence
+
+The channel records a substantial proportion of the transaction count and/or transaction value compared with other channels.
+
+### Business Meaning
+
+FinTrust may need to prioritize the reliability, usability, and monitoring of this channel because changes in its performance could have a meaningful effect on overall transaction activity.
+
+Key Business Areas Identified
+
+The analysis provides insights across several areas:
+
+- Customer Behaviour
+
+Transaction patterns can help FinTrust understand customer activity and identify customers who contribute significant transaction value or frequency.
+
+- Digital Channel Performance
+
+Comparing transaction channels helps management understand where customers are conducting transactions and where operational resources may be most important.
+
+- Device Usage
+
+Device analysis provides insight into the technologies customers use when accessing FinTrust's services.
+
+- Transaction Operations
+
+Transaction status analysis helps highlight successful, failed, and pending transactions that may require operational monitoring.
+
+- Risk Monitoring
+
+Risk-related indicators provide a starting point for identifying transaction segments that may require additional investigation or monitoring.
+
+- Revenue and Transaction Value
+
+Transaction value analysis helps management understand the monetary scale of activity across different customer and transaction segments.
+
+## Tools & Technologies
+- Microsoft Excel: for data quality assessment, cleaning and preliminary analysis
+- MySQL: Transaction analysis and customer-level analysis
+- Python: Exploratory data analysis and visualization
+- Pandas: Data manipulation and analysis
+- Numpy: Data manipulation and analysis
+- Jupyter Notebook: Data manipulation and analysis
+- Matplotlib: For Visualizaton purposes within the Python environment
+- Power BI:	Interactive dashboard and management reporting
+- GitHub: Project documentation and portfolio prese
