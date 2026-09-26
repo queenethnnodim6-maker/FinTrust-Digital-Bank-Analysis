@@ -292,12 +292,12 @@ Risk-related indicators provide a starting point for identifying transaction seg
 Transaction value analysis helps management understand the monetary scale of activity across different customer and transaction segments.
 
 ## Tools & Technologies
-- Microsoft Excel: for data quality assessment, cleaning and preliminary analysis
-- MySQL: Transaction analysis and customer-level analysis
-- Python: Exploratory data analysis and visualization
-- Pandas: Data manipulation and analysis
-- Numpy: Data manipulation and analysis
-- Jupyter Notebook: Data manipulation and analysis
-- Matplotlib: For Visualizaton purposes within the Python environment
-- Power BI:	Interactive dashboard and management reporting
-- GitHub: Project documentation and portfolio prese
+#### Microsoft Excel: 
+#### MySQL 
+#### Python
+#### Pandas
+#### Numpy 
+#### Jupyter Notebook
+#### Matplotlib
+#### Power BI
+#### GitHub
