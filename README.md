@@ -239,6 +239,9 @@ Customer-level transaction activity was examined to identify differences in tran
 
 Risk-related transaction indicators were incorporated to help identify areas that may require additional investigation.
 
+<img width="866" height="493" alt="IMG-20260924-WA0034" src="https://github.com/user-attachments/assets/b1a724da-2a9b-4448-a7a1-8ac7544080dc" />
+
+
 ## Business Findings
 
 The final stage of the project translated analytical results into business findings.
@@ -292,7 +295,7 @@ Risk-related indicators provide a starting point for identifying transaction seg
 Transaction value analysis helps management understand the monetary scale of activity across different customer and transaction segments.
 
 ## Tools & Technologies
-#### Microsoft Excel: 
+#### Microsoft Excel
 #### MySQL 
 #### Python
 #### Pandas
@@ -301,3 +304,5 @@ Transaction value analysis helps management understand the monetary scale of act
 #### Matplotlib
 #### Power BI
 #### GitHub
+
+
