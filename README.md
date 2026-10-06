@@ -239,8 +239,7 @@ Customer-level transaction activity was examined to identify differences in tran
 
 Risk-related transaction indicators were incorporated to help identify areas that may require additional investigation.
 
-<img width="866" height="493" alt="IMG-20260924-WA0034" src="https://github.com/user-attachments/assets/b1a724da-2a9b-4448-a7a1-8ac7544080dc" />
-
+<img width="634" height="357" alt="good" src="https://github.com/user-attachments/assets/bf14baee-9771-4a8a-897c-74e70957b615" />
 
 ## Business Findings
 
